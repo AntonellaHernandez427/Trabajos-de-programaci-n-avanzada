@@ -179,7 +179,7 @@
     });
     const alertasAltas = alertas
       .filter(a => a.nivel === "alto")
-      .map(a => `⚠️ Alerta ALTA: ${a.origen} → ${a.destino} | ${a.protocolo} (${a.bytes} bytes)`);
+      .map(a => ` Alerta ALTA: ${a.origen} → ${a.destino} | ${a.protocolo} (${a.bytes} bytes)`);
     const ej8Content = document.getElementById("ej8-content");
     alertasAltas.forEach(msg => {
       const li = document.createElement("li");
@@ -328,3 +328,4 @@
   </script>
 </body>
 </html>
+
