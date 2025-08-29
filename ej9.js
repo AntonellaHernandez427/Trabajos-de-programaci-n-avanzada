@@ -19,23 +19,19 @@ const topologiaRed = {
   ]
 };
 
-// 1. Inicializar conexiones por nodo
 const conexionesPorNodo = {};
 topologiaRed.nodos.forEach(nodo => {
   conexionesPorNodo[nodo.id] = 0;
 });
 
-// 2. Contar conexiones
 topologiaRed.conexiones.forEach(conexion => {
   conexionesPorNodo[conexion.origen]++;
   conexionesPorNodo[conexion.destino]++;
 });
 
-// 3. Ordenar nodos de mayor a menor número de conexiones
 const nodosOrdenados = Object.entries(conexionesPorNodo)
   .sort((a, b) => b[1] - a[1]); // [ ["C", 4], ["D", 3], ... ]
 
-// 4. Sugerencias de optimización
 const sugerencias = nodosOrdenados
   .filter(([_, cantidad]) => cantidad > 2)
   .map(([nodo, cantidad]) => {
@@ -43,7 +39,6 @@ const sugerencias = nodosOrdenados
     return `⚡ El nodo ${nodo} (${infoNodo.tipo}, ${infoNodo.ubicacion}) tiene ${cantidad} conexiones. Se recomienda aumentar el ancho de banda.`;
   });
 
-// 5. Mostrar resultados en HTML
 const ej9Content = document.getElementById("ej9-content");
 
 const listaConexiones = document.createElement("ul");
@@ -75,3 +70,4 @@ ej9Content.appendChild(listaSugerencias);
 console.log("Conexiones por nodo:", conexionesPorNodo);
 console.log("Nodos ordenados por número de conexiones:", nodosOrdenados);
 console.log("Sugerencias de optimización:", sugerencias);
+
