@@ -13,10 +13,8 @@ const traficoRed = {
   "17:00": 1500
 };
 
-// Calcular total de datos transferidos
 const totalDatos = Object.values(traficoRed).reduce((acum, val) => acum + val, 0);
 
-// Encontrar la hora con mayor tráfico
 let maxHora = "";
 let maxValor = 0;
 for (const [hora, valor] of Object.entries(traficoRed)) {
@@ -26,7 +24,7 @@ for (const [hora, valor] of Object.entries(traficoRed)) {
   }
 }
 
-// Mostrar resultados
 document.getElementById("ej6").textContent =
   `Total de datos transferidos: ${totalDatos} MB\n` +
   `Hora con mayor tráfico: ${maxHora} (${maxValor} MB)`;
+
