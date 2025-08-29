@@ -20,23 +20,19 @@ const topologiaRed = {
   ]
 };
 
-// 1. Inicializar el contador de conexiones
 const conexionesPorNodo = {};
 topologiaRed.nodos.forEach(nodo => {
   conexionesPorNodo[nodo.id] = 0;
 });
 
-// 2. Contar conexiones por nodo
 topologiaRed.conexiones.forEach(conexion => {
   conexionesPorNodo[conexion.origen]++;
   conexionesPorNodo[conexion.destino]++;
 });
 
-// 3. Ordenar nodos de mayor a menor conexiones
 const nodosOrdenados = Object.entries(conexionesPorNodo)
   .sort((a, b) => b[1] - a[1]);
 
-// 4. Sugerir optimizaciones
 const sugerencias = [];
 nodosOrdenados.forEach(([nodo, conexiones]) => {
   if (conexiones > 2) {
@@ -46,10 +42,8 @@ nodosOrdenados.forEach(([nodo, conexiones]) => {
   }
 });
 
-// 5. Mostrar en HTML
 const ej10Content = document.getElementById("ej10-content");
 
-// Mostrar conexiones por nodo
 const listaConexiones = document.createElement("ul");
 for (let nodo in conexionesPorNodo) {
   const li = document.createElement("li");
@@ -58,7 +52,6 @@ for (let nodo in conexionesPorNodo) {
 }
 ej10Content.appendChild(listaConexiones);
 
-// Mostrar sugerencias
 const listaSugerencias = document.createElement("ul");
 sugerencias.forEach(sug => {
   const li = document.createElement("li");
@@ -70,3 +63,4 @@ ej10Content.appendChild(listaSugerencias);
 console.log("Conexiones por nodo:", conexionesPorNodo);
 console.log("Nodos ordenados por número de conexiones:", nodosOrdenados);
 console.log("Sugerencias de optimización:", sugerencias);
+
