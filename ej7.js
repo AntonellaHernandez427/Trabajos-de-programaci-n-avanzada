@@ -11,7 +11,6 @@ const conexiones = [
   { id: 8, origen: "192.168.1.4", destino: "192.168.1.11", protocolo: "HTTP" }
 ];
 
-// Contar conexiones por protocolo
 const conexionesPorProtocolo = {};
 conexiones.forEach(c => {
   if (conexionesPorProtocolo[c.protocolo]) {
@@ -21,7 +20,6 @@ conexiones.forEach(c => {
   }
 });
 
-// Mostrar en HTML
 const ej7Content = document.getElementById("ej7-content");
 for (const [protocolo, cantidad] of Object.entries(conexionesPorProtocolo)) {
   const li = document.createElement("li");
@@ -29,5 +27,5 @@ for (const [protocolo, cantidad] of Object.entries(conexionesPorProtocolo)) {
   ej7Content.appendChild(li);
 }
 
-// También en consola
 console.log("Conexiones por protocolo:", conexionesPorProtocolo);
+
