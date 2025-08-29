@@ -14,7 +14,6 @@ const conexionesActivas = [
   { origen: "192.168.1.5", destino: "192.168.1.11", protocolo: "MySQL", bytes: 9200 }
 ];
 
-// 1. Generar informe de actividad con nombres de dispositivos
 const informeActividad = conexionesActivas.map(conexion => {
   const origenDispositivo = dispositivosEj8.find(d => d.ip === conexion.origen);
   const destinoDispositivo = dispositivosEj8.find(d => d.ip === conexion.destino);
@@ -27,7 +26,6 @@ const informeActividad = conexionesActivas.map(conexion => {
   };
 });
 
-// 2. Crear alertas con nivel de seguridad
 const alertas = informeActividad.map(conexion => {
   let nivel = "bajo";
   if (conexion.bytes > 10000 || conexion.protocolo === "MySQL") {
@@ -36,17 +34,16 @@ const alertas = informeActividad.map(conexion => {
   return { ...conexion, nivel };
 });
 
-// 3. Filtrar solo alertas altas y transformarlas en mensajes
 const alertasAltas = alertas
   .filter(alerta => alerta.nivel === "alto")
   .map(alerta =>
-    `⚠️ Alerta ALTA: ${alerta.origen} → ${alerta.destino} | ${alerta.protocolo} (${alerta.bytes} bytes)`
+    ` Alerta ALTA: ${alerta.origen} → ${alerta.destino} | ${alerta.protocolo} (${alerta.bytes} bytes)`
   );
 
-// 4. Mostrar en HTML
 const ej8Content = document.getElementById("ej8-content");
 alertasAltas.forEach(msg => {
   const li = document.createElement("li");
   li.textContent = msg;
   ej8Content.appendChild(li);
 });
+
