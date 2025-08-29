@@ -216,7 +216,7 @@
       .filter(([, cant]) => cant > 2)
       .map(([nodo, cant]) => {
         const info = topologiaRed9.nodos.find(n => n.id === nodo);
-        return `⚡ El nodo ${nodo} (${info.tipo}, ${info.ubicacion}) tiene ${cant} conexiones. Se recomienda aumentar el ancho de banda.`;
+        return ` El nodo ${nodo} (${info.tipo}, ${info.ubicacion}) tiene ${cant} conexiones. Se recomienda aumentar el ancho de banda.`;
       });
 
     const ej9Content = document.getElementById("ej9-content");
@@ -276,7 +276,7 @@
       .filter(([, cant]) => cant > 2)
       .map(([nodo, cant]) => {
         const info = topologiaRed10.nodos.find(n => n.id === nodo);
-        return `🔧 El nodo ${nodo} (${info.tipo}, ${info.ubicacion}) tiene ${cant} conexiones. Se recomienda aumentar su ancho de banda o balancear la carga.`;
+        return ` El nodo ${nodo} (${info.tipo}, ${info.ubicacion}) tiene ${cant} conexiones. Se recomienda aumentar su ancho de banda o balancear la carga.`;
       });
 
     const ej10Content = document.getElementById("ej10-content");
@@ -328,4 +328,5 @@
   </script>
 </body>
 </html>
+
 
